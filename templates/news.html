@@ -1,0 +1,26 @@
+{% extends "weightdoc.html" %}
+{% load cms_tags menu_tags %}
+
+{% block main %}
+<div class="row">
+    <div class="span10 offsetcontent">
+        <div class="page-header">
+            <h1>{% page_attribute "page_title" %} <small> {{ current_page.publication_date|date:'d. M Y' }}</small></h1>
+            {% if current_page.children.count > 0 or current_page.parent.children.count > 0 %}
+            <ul class="pull-right" id="menu-content-sub">
+                {% if current_page.children.count > 0 and not current_page.parent.children.count > 0 %}
+                    {% show_sub_menu %}
+                {% elif current_page.parent.children.count > 0 %}
+                    {% show_menu 1 100 0 100 "sub_menu.html"%}
+                {% endif %}
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="span10 offsetcontent">
+        {% placeholder "content" %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% load cms_tags menu_tags %}
+{% if not news %}
+    <p>We are sorry, there are no news yet.</p>
+{% else %}
+    <ul class="unstyled">
+    {% for new in news %}
+        <li>
+            <h3>
+                <a href="{{ new.get_path }}">{{ new.get_title }}</a>
+                <small> {{ new.publication_date|date:'d. M Y' }}</small>
+            </h3>
+            {% for placeholder in new.placeholders.all %}
+                {% show_placeholder placeholder.slot new current_language %}
+            {% endfor %}
+        </li>
+    {% endfor %}
+    </ul>
+{% endif %}
