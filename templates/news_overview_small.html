@@ -1,0 +1,13 @@
+{% load cms_tags menu_tags %}
+{% if not smallnews %}
+    <p>We are sorry, there are no news yet.</p>
+{% else %}
+    <ul class="unstyled">
+    {% for new in smallnews %}
+        <li>
+            <strong><a href="{{ new.get_path }}">{{ new.get_title }}</a></strong><br />
+            <small> {{ new.publication_date|date:'d. M Y' }}</small>
+        </li>
+    {% endfor %}
+    </ul>
+{% endif %}

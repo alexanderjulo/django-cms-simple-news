@@ -6,3 +6,9 @@ class NewsFilter(CMSPlugin):
     """Saves the settings for the News."""
     # the number of articles that should be displayed.
     number = models.IntegerField(default=5)
+
+
+class SmallNewsFilter(CMSPlugin):
+    """Saves the settings for the News."""
+    # the number of articles that should be displayed.
+    number = models.IntegerField(default=5)
